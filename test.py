@@ -31,14 +31,16 @@ def simulate():
         dist1 = de.UniformDistribution(913812, 1, widthValue)
         generator1 = de.QueryWorkloadGenerator(0, numPuts, dist1)
         workload1 = generator1.generate()
-        queryblock_puts = workload1.getBlock(1)
+        queryblock_puts = workload1.getBlock(0)
+        # queryblock_puts = workload1.print_all()
 
         #3. num of gets
         numGets = int(workload["gets"])
         dist2 = de.UniformDistribution(913812, 1, widthValue)
-        generator2 = de.QueryWorkloadGenerator(1, numGets, dist2);
+        generator2 = de.QueryWorkloadGenerator(1, numGets, dist2)
         workload2 = generator2.generate()
-        queryblock_gets = workload2.getBlock(1)
+        queryblock_gets = workload2.getBlock(0)
+        # queryblock_gets = workload2.print_all()
 
         length = 0
         x = de.SystemDesignOptionHierarchy()
@@ -63,10 +65,10 @@ def simulate():
         element = ef.generate()
         path = "models.txt".encode('utf-8')
         models = de.MicroBenchmark()
-        # models.load(path)
-        # print models
-        # res = element.estimateGets(queryblock_puts, queryblock_gets, models, None)
-        # print res
+        models.load(path)
+        print models
+        res = element.estimateGets(queryblock_puts, queryblock_gets, models, None)
+        print res
 
         # estimateGets(design_engine::data::QueryBlock *puts,
         #              design_engine::data::QueryBlock *gets,
