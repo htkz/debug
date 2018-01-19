@@ -28,20 +28,21 @@ def simulate():
 
         #2. num of puts
         numPuts = int(workload["puts"])
+        print numPuts
         dist1 = de.UniformDistribution(913812, 1, widthValue)
         generator1 = de.QueryWorkloadGenerator(0, numPuts, dist1)
         workload1 = generator1.generate()
-        # queryblock_puts = workload1.getBlock(0)
+        queryblock_puts = workload1.getBlock()
         # queryblock_puts.printBlock()
 
 
         #3. num of gets
-        numGets = int(workload["gets"])
-        dist2 = de.UniformDistribution(913812, 1, widthValue)
-        generator2 = de.QueryWorkloadGenerator(1, numGets, dist2)
-        workload2 = generator2.generate()
-        # queryblock_gets = workload2.getBlock(0)
-
+        # numGets = int(workload["gets"])
+        # dist2 = de.UniformDistribution(913812, 1, widthValue)
+        # generator2 = de.QueryWorkloadGenerator(1, numGets, dist2)
+        # workload2 = generator2.generate()
+        # queryblock_gets = workload2.getBlock()
+        #
         # length = 0
         # x = de.SystemDesignOptionHierarchy()
         # for name in nodes:
@@ -66,6 +67,7 @@ def simulate():
         # models.load(path)
         # print models
         # res = element.estimateGets(queryblock_puts, queryblock_gets, models, None)
+        # print(res.getValue())
         # print res
 
         print(">>> Done.")
